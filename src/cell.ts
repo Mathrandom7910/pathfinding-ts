@@ -36,7 +36,9 @@ export class Cell extends Pos{
         ctx.strokeRect(this.ren.x, this.ren.y, this.size, this.size);
     }
 
-    
+    dist(pos: Pos) {
+        return Math.hypot(pos.x - this.x, pos.y - this.y);
+    }
 }
 
 export class Mouse extends Pos {

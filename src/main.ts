@@ -11,8 +11,8 @@ ctx = <CanvasRenderingContext2D> canvas.getContext("2d");
 
 
 export class Game {
-  static cellSize = 10;
-  static maxCount = 1e5;
+  static cellSize = 6;
+  static maxCount = 1e7;
 
   mouse = new Mouse();
   cells: Cell[][] = [];
@@ -142,6 +142,7 @@ export class Game {
     this.cells.forEach(cells => cells.forEach(cell => {
       cell.parent = null;
       cell.pathOver = false;
+      cell.checked = false;
     }));
     if(this.cellBind.start == null || this.cellBind.end == null) return;
     var curCell = this.checkAround(this.cellBind.start);
@@ -160,5 +161,8 @@ game.render();
 declare global {
   interface Window {
     game: Game;
+    sorting: boolean;
   }
 }
+window.sorting = false;
+window.game = game;
