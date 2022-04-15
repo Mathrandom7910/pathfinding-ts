@@ -145,13 +145,11 @@ export class Game {
     }));
     if(this.cellBind.start == null || this.cellBind.end == null) return;
     var curCell = this.checkAround(this.cellBind.start);
-    var debug: Cell[] = [];
     while(curCell != null) {
-      debug.push(curCell);
       curCell.pathOver = true;
       curCell = curCell.parent;
     }
-    console.log(`took ${Date.now() - startTime} ms`, debug);
+    console.log(`took ${Date.now() - startTime} ms`);
   }
 }
 
